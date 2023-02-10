@@ -1,0 +1,388 @@
+/**************************************************** Variables ****************************************************/
+/**************************************************** Overall ****************************************************/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Poppins;
+  background-color: #2b3036;
+  background-size: cover;
+  color: #ccc;
+  overflow: hidden;
+}
+
+body.preload * {
+  -webkit-animation-duration: 0s !important;
+          animation-duration: 0s !important;
+}
+
+/**************************************************** main content ****************************************************/
+.main_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.main_container .weather_entry_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  background-color: #1f2428;
+  border-radius: 20px;
+  -webkit-animation: shrink 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+          animation: shrink 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 3;
+}
+.main_container .weather_entry_container h1 {
+  font-size: 80px;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_entry_container .form_container {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 64px;
+  width: 60%;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_entry_container .form_container .form_city {
+  text-align: center;
+  max-width: 60%;
+  background-color: #ccc;
+  color: #1f2428;
+  border: none;
+  border-radius: 10px;
+  font-size: 30px;
+  height: 100%;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_entry_container .form_container .form_city:focus {
+  outline: 1px solid #4a5561;
+}
+.main_container .weather_entry_container .form_container .form_city:focus::-moz-placeholder {
+  color: #ccc;
+}
+.main_container .weather_entry_container .form_container .form_city:focus:-ms-input-placeholder {
+  color: #ccc;
+}
+.main_container .weather_entry_container .form_container .form_city:focus::placeholder {
+  color: #ccc;
+}
+.main_container .weather_entry_container .form_container .form_select {
+  height: 100%;
+  width: 75px;
+  background-color: #ccc;
+  color: #1f2428;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+  cursor: pointer;
+}
+.main_container .weather_entry_container .form_container .form_select .form_chosen_country {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  border-radius: 10px;
+  color: #6f7173;
+}
+.main_container .weather_entry_container .form_container .form_select .form_select_element {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+}
+.main_container .weather_entry_container .form_container .form_select .form_select_element:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.main_container .weather_entry_container .form_container .form_select .form_select_element:first-child:hover {
+  background-color: #ccc;
+}
+.main_container .weather_entry_container .form_container .form_select .form_select_element:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.main_container .weather_entry_container .form_container .form_select .form_select_element:hover {
+  background-color: #bbb;
+  cursor: pointer;
+}
+.main_container .weather_entry_container .form_container .form_submit {
+  width: 64px;
+  height: 100%;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  background: none;
+  background-image: url("../images/arrow.png");
+  background-size: cover;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_entry_container .form_container .form_submit:hover {
+  cursor: pointer;
+}
+.main_container .weather_details_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: #1f2428;
+  border-radius: 20px;
+  -webkit-animation: expand 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+          animation: expand 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 3;
+}
+.main_container .weather_details_container .back_button {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  height: 40px;
+  width: 40px;
+  background-image: url("../images/back.png");
+  background-size: cover;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_details_container .back_button:hover {
+  cursor: pointer;
+}
+.main_container .weather_details_container .details_geo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_details_container .details_geo .details_titre {
+  font-size: 50px;
+}
+.main_container .weather_details_container .details_geo .details_latlon {
+  font-size: 20px;
+}
+.main_container .weather_details_container .details_resume_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 30px;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_details_container .details_resume_container .icon_container {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 1/1;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_details_container .details_resume_container .icon_container .icon {
+  height: 128px;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_details_container .details_resume_container .details_resume {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.main_container .weather_details_container .details_resume_container .details_resume .feels {
+  font-size: 20px;
+}
+.main_container .weather_details_container .details_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80%;
+  height: 30%;
+  background-color: #2b3036;
+  border-radius: 10px;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+.main_container .weather_details_container .details_container .contition_container,
+.main_container .weather_details_container .details_container .wind_container,
+.main_container .weather_details_container .details_container .sunrise_container,
+.main_container .weather_details_container .details_container .sunset_container,
+.main_container .weather_details_container .details_container .timezone_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 20%;
+}
+.main_container .weather_details_container .details_container .contition_container .description,
+.main_container .weather_details_container .details_container .wind_container .description,
+.main_container .weather_details_container .details_container .sunrise_container .description,
+.main_container .weather_details_container .details_container .sunset_container .description,
+.main_container .weather_details_container .details_container .timezone_container .description {
+  text-align: center;
+}
+.main_container .weather_details_container .details_container .contition_container .condition_icon,
+.main_container .weather_details_container .details_container .contition_container .wind_icon,
+.main_container .weather_details_container .details_container .contition_container .sunrise_icon,
+.main_container .weather_details_container .details_container .contition_container .sunset_icon,
+.main_container .weather_details_container .details_container .contition_container .timezone_icon,
+.main_container .weather_details_container .details_container .wind_container .condition_icon,
+.main_container .weather_details_container .details_container .wind_container .wind_icon,
+.main_container .weather_details_container .details_container .wind_container .sunrise_icon,
+.main_container .weather_details_container .details_container .wind_container .sunset_icon,
+.main_container .weather_details_container .details_container .wind_container .timezone_icon,
+.main_container .weather_details_container .details_container .sunrise_container .condition_icon,
+.main_container .weather_details_container .details_container .sunrise_container .wind_icon,
+.main_container .weather_details_container .details_container .sunrise_container .sunrise_icon,
+.main_container .weather_details_container .details_container .sunrise_container .sunset_icon,
+.main_container .weather_details_container .details_container .sunrise_container .timezone_icon,
+.main_container .weather_details_container .details_container .sunset_container .condition_icon,
+.main_container .weather_details_container .details_container .sunset_container .wind_icon,
+.main_container .weather_details_container .details_container .sunset_container .sunrise_icon,
+.main_container .weather_details_container .details_container .sunset_container .sunset_icon,
+.main_container .weather_details_container .details_container .sunset_container .timezone_icon,
+.main_container .weather_details_container .details_container .timezone_container .condition_icon,
+.main_container .weather_details_container .details_container .timezone_container .wind_icon,
+.main_container .weather_details_container .details_container .timezone_container .sunrise_icon,
+.main_container .weather_details_container .details_container .timezone_container .sunset_icon,
+.main_container .weather_details_container .details_container .timezone_container .timezone_icon {
+  height: 64px;
+  width: 64px;
+  background-size: cover;
+}
+.main_container .weather_details_container .details_container .contition_container .condition_icon,
+.main_container .weather_details_container .details_container .wind_container .condition_icon,
+.main_container .weather_details_container .details_container .sunrise_container .condition_icon,
+.main_container .weather_details_container .details_container .sunset_container .condition_icon,
+.main_container .weather_details_container .details_container .timezone_container .condition_icon {
+  background-image: url("../images/weather.png");
+}
+.main_container .weather_details_container .details_container .contition_container .wind_icon,
+.main_container .weather_details_container .details_container .wind_container .wind_icon,
+.main_container .weather_details_container .details_container .sunrise_container .wind_icon,
+.main_container .weather_details_container .details_container .sunset_container .wind_icon,
+.main_container .weather_details_container .details_container .timezone_container .wind_icon {
+  background-image: url("../images/wind.png");
+}
+.main_container .weather_details_container .details_container .contition_container .sunrise_icon,
+.main_container .weather_details_container .details_container .wind_container .sunrise_icon,
+.main_container .weather_details_container .details_container .sunrise_container .sunrise_icon,
+.main_container .weather_details_container .details_container .sunset_container .sunrise_icon,
+.main_container .weather_details_container .details_container .timezone_container .sunrise_icon {
+  background-image: url("../images/sunrise.png");
+}
+.main_container .weather_details_container .details_container .contition_container .sunset_icon,
+.main_container .weather_details_container .details_container .wind_container .sunset_icon,
+.main_container .weather_details_container .details_container .sunrise_container .sunset_icon,
+.main_container .weather_details_container .details_container .sunset_container .sunset_icon,
+.main_container .weather_details_container .details_container .timezone_container .sunset_icon {
+  background-image: url("../images/sunset.png");
+}
+.main_container .weather_details_container .details_container .contition_container .timezone_icon,
+.main_container .weather_details_container .details_container .wind_container .timezone_icon,
+.main_container .weather_details_container .details_container .sunrise_container .timezone_icon,
+.main_container .weather_details_container .details_container .sunset_container .timezone_icon,
+.main_container .weather_details_container .details_container .timezone_container .timezone_icon {
+  background-image: url("../images/timezone.png");
+}
+.main_container .transition_fill {
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  background-color: #1f2428;
+  border-radius: 20px;
+  z-index: 2;
+}
+.main_container .sun_cloud {
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  transform: translate(-50%, -50%);
+  height: 30vh;
+  aspect-ratio: 1/1;
+  background-image: url("../images/sun-cloud.png");
+  background-size: cover;
+  z-index: 1;
+}
+
+/**************************************************** Keyframes ****************************************************/
+@-webkit-keyframes expand {
+  0% {
+    height: 35%;
+  }
+  100% {
+    height: 50%;
+  }
+}
+@keyframes expand {
+  0% {
+    height: 35%;
+  }
+  100% {
+    height: 50%;
+  }
+}
+@-webkit-keyframes shrink {
+  0% {
+    height: 50%;
+  }
+  100% {
+    height: 40%;
+  }
+}
+@keyframes shrink {
+  0% {
+    height: 50%;
+  }
+  100% {
+    height: 40%;
+  }
+}
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+/**************************************************** Hide VueJS loading ****************************************************/
+[v-cloak],
+[v-cloak] > * {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

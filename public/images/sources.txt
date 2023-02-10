@@ -1,0 +1,11 @@
+Icon:
+Arrow: https://www.flaticon.com/free-icon/send-message_3682321
+Back: https://www.flaticon.com/free-icon/back_130882
+Weather: https://www.flaticon.com/free-icon/cloudy_2932445
+Wind: https://www.flaticon.com/free-icon/wind_959711
+Sunrise: https://www.flaticon.com/free-icon/sunrise_3920639
+Sunset: https://www.flaticon.com/free-icon/sunset_3920728
+Timezone: https://www.flaticon.com/free-icon/time-zone_3503230
+
+Background icons:
+Sun cloud: https://www.flaticon.com/free-icon/cloudy_1163661

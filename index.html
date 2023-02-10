@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="public/css/style.css">
+    <title>Weather</title>
+</head>
+<body class="preload">
+
+<div id="app">
+
+    <main v-cloak class="main_container">
+
+        <!-- The large icon behind the first card -->
+        <div class="sun_cloud"></div>
+        
+        <!-- First card that shows city and country inputs -->
+        <div class="weather_entry_container" v-if="current_page == 'input'">
+            <h1>Weather</h1>
+            <form class="form_container" name="form_geo" @submit.prevent="confirmGeo">
+                <input class="form_city" type="text" name="city" v-model="city" placeholder="city">
+                <div class="form_select" name="" id="" @click="countryAssoc">
+                    <div class="form_chosen_country" v-if="country != '' || country == 'ctry'" @click="changeCountry">{{ country }}</div>
+                    <div class="form_select_element" v-if="country == ''" v-for="element in country_assoc" @click="country_select(element)">{{element}}</div>
+                </div>
+                <input class="form_submit" type="submit" value=" ">
+            </form>
+        </div>
+
+
+        <!-- Second card that shows weather information -->
+        <div class="weather_details_container" v-if="weather != '' && current_page == 'weather'">
+            <div class="back_button" @click="reset"></div>
+            <!-- City title -->
+            <div class="details_geo">
+                <p class="details_titre">{{ city }} · {{country}}</p>
+                <p class="details_latlon">
+                    {{ cardinalPoint('lat', lat) }} · {{ cardinalPoint('lon', lon) }}
+                </p>
+            </div>
+            <!-- Current temperature and icon -->
+            <div class="details_resume_container">
+                <div class="icon_container">
+                    <img class="icon" :src="'http://openweathermap.org/img/wn/' + weather.weather[0].icon + '@4x.png'">
+                </div>
+                <div class="details_resume">
+                    <p>{{ Math.floor(weather.main.temp) }} °C</p>
+                    <p class="feels">({{ Math.floor(weather.main.feels_like )}} °C)</p>
+                </div>
+            </div>
+            <!-- Bottom section of the second card that displays more information -->
+            <div class="details_container">
+                <div class="contition_container">
+                    <div class="condition_icon"></div>
+                    <p class="description">{{ description(weather.weather[0].description) }}</p>
+                </div>
+                <div class="wind_container">
+                    <div class="wind_icon"></div>
+                    <p>{{ windSpeed(weather.wind.speed, weather.wind.deg) }}</p>
+                </div>
+                <div class="sunrise_container">
+                    <div class="sunrise_icon"></div>
+                    <p>{{ getTime(weather.timezone, weather.sys.sunrise) }}</p>
+                </div>
+                <div class="sunset_container">
+                    <div class="sunset_icon"></div>
+                    <p>{{ getTime(weather.timezone, weather.sys.sunset) }}</p>
+                </div>
+                <div class="timezone_container">
+                    <div class="timezone_icon"></div>
+                    <p>{{ timezone }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gives an 'expandable card' illusion as it sits between the first and second card -->
+        <!-- Since the first and second cards are 'v-if', they disappear on click and appear only when the API call is done -->
+        <div class="transition_fill"></div>
+    </main>
+</div>
+
+<script src="js/main.js" type="module"></script>
+</body>
+</html>
