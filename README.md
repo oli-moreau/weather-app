@@ -5,7 +5,7 @@ A simple weather app made in one of my classes that uses the following:
 - [OpenWeather Current API](https://openweathermap.org/current)
 - Icons are from [flaticon](https://www.flaticon.com/). More info in the [sources.txt file](https://github.com/oli-moreau/weather-app/blob/main/public/images/sources.txt)
 
-[Screencast from 2023-02-10 13-08-33 (trimmed).webm](https://user-images.githubusercontent.com/123499791/218173208-531a3fbd-feec-4166-98ef-5d1287cf5389.webm)
+![Screenshot from 2023-02-16 08-02-15](https://user-images.githubusercontent.com/123499791/219372714-0521b749-a8ee-4a40-96b1-a12c25713f1a.png)
 
 ## How to use?
 Download the files
